@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<rutes>
+  <ruta>
+    <nom>Pujada a Penyagolosa</nom>
+    <desnivell>530</desnivell>
+    <desnivellAcumulat>530</desnivellAcumulat>
+    <punts>
+      <punt num="1">
+        <nom>Sant Joan</nom>
+        <latitud>40.251036</latitud>
+        <longitud>-0.354223</longitud>
+      </punt>
+      <punt num="2">
+        <nom>Encreuament</nom>
+        <latitud>40.25156</latitud>
+        <longitud>-0.352507</longitud>
+      </punt>
+      <punt num="3">
+        <nom>Barranc de la Pegunta</nom>
+        <latitud>40.247318</latitud>
+        <longitud>-0.351713</longitud>
+      </punt>
+      <punt num="4">
+        <nom>El Corralico</nom>
+        <latitud>40.231708</latitud>
+        <longitud>-0.348859</longitud>
+      </punt>
+      <punt num="5">
+        <nom>Penyagolosa</nom>
+        <latitud>40.222632</latitud>
+        <longitud>-0.350339</longitud>
+      </punt>
+    </punts>
+  </ruta>
+  <ruta>
+    <nom>La Magdalena</nom>
+    <desnivell>51</desnivell>
+    <desnivellAcumulat>84</desnivellAcumulat>
+    <punts>
+      <punt num="1">
+        <nom>Primer Molí</nom>
+        <latitud>39.99385</latitud>
+        <longitud>-0.032941</longitud>
+      </punt>
+      <punt num="2">
+        <nom>Segon Molí</nom>
+        <latitud>39.99628</latitud>
+        <longitud>-0.029427</longitud>
+      </punt>
+      <punt num="3">
+        <nom>Caminàs</nom>
+        <latitud>40.00513</latitud>
+        <longitud>-0.022569</longitud>
+      </punt>
+      <punt num="4">
+        <nom>Riu Sec</nom>
+        <latitud>40.006765</latitud>
+        <longitud>-0.02237</longitud>
+      </punt>
+      <punt num="5">
+        <nom>Sant Roc</nom>
+        <latitud>40.017906</latitud>
+        <longitud>-0.02289</longitud>
+      </punt>
+      <punt num="6">
+        <nom>Explanada</nom>
+        <latitud>40.034048</latitud>
+        <longitud>-0.00633</longitud>
+      </punt>
+      <punt num="7">
+        <nom>La Magdalena</nom>
+        <latitud>40.034519</latitud>
+        <longitud>-0.005856</longitud>
+      </punt>
+    </punts>
+  </ruta>
+</rutes>
