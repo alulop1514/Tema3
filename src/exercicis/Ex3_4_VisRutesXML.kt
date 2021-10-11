@@ -12,6 +12,7 @@ class Finestra : JFrame() {
     init {
         val doc: Document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse("Rutes.xml")
         val arrel = doc.documentElement
+        // Creem la array del elements ruta
         val llistaRutes = arrel.getElementsByTagName("ruta")
 
         defaultCloseOperation = EXIT_ON_CLOSE
@@ -24,9 +25,11 @@ class Finestra : JFrame() {
         add(panell1,BorderLayout.NORTH)
         add(panell2,BorderLayout.CENTER)
 
+        // Guardem els noms de les rutes en llistaNomRutes
         val llistaNomRutes = arrayListOf<String>()
         for (i in 0 until llistaRutes.length) {
             val ruta = llistaRutes.item(i) as Element
+            // Guardem el nom del element en la array
             llistaNomRutes.add(ruta.getElementsByTagName("nom").item(0).childNodes.item(0).nodeValue)
         }
         val combo = JComboBox(llistaNomRutes.toArray())
@@ -35,6 +38,8 @@ class Finestra : JFrame() {
         panell2.add(JLabel("Llista de punts de la ruta:"),BorderLayout.NORTH)
         val area = JTextArea()
         panell2.add(area)
+
+        // Carreguem en area la primera ruta
         var ruta = llistaRutes.item(combo.selectedIndex) as Element
         var llistaPunts = ruta.getElementsByTagName("punt")
         for (i in 0 until llistaPunts.length) {
@@ -44,9 +49,12 @@ class Finestra : JFrame() {
             area.text += "${punt.getElementsByTagName("longitud").item(0).textContent})"
             area.text += "\n"
         }
+        // Listener que cambia el area als punts de cada ruta
         combo.addActionListener {
             area.text = ""
+            // Guardem la ruta elegida
             ruta = llistaRutes.item(combo.selectedIndex) as Element
+            // Creem una array de punts d'on agafarem els punts
             llistaPunts = ruta.getElementsByTagName("punt")
             for (i in 0 until llistaPunts.length) {
                 val punt = llistaPunts.item(i) as Element
