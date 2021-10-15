@@ -30,7 +30,7 @@ class Finestra : JFrame() {
         for (i in 0 until llistaRutes.length) {
             val ruta = llistaRutes.item(i) as Element
             // Guardem el nom del element en la array
-            llistaNomRutes.add(ruta.getElementsByTagName("nom").item(0).childNodes.item(0).nodeValue)
+            llistaNomRutes.add(ruta.getElementsByTagName("nom").item(0).textContent)
         }
         val combo = JComboBox(llistaNomRutes.toArray())
         panell1.add(combo)
