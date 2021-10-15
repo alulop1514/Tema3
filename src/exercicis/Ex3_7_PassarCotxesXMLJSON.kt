@@ -49,8 +49,9 @@ fun main(args: Array<String>) {
             val foto = fotos.item(x) as Element
             fotosCotxes.add(foto.textContent)
         }
-
     }
+    var posicionExtras = 0
+    var posicionFotos = 0
     val arrelJson = JSONObject()
     val oferta = JSONObject()
     val vehiculos = JSONArray()
@@ -72,15 +73,28 @@ fun main(args: Array<String>) {
         vehiculo.put("precio_inicial", preciosIniciales[i])
         vehiculo.put("precio_oferta", preciosOferta[i])
         val extras = JSONArray()
+        var aux = 0
         for (x in 0 until arrayNumExtras[i]) {
             val extra = JSONObject()
-            extra.put("valor", valorExtras[x])
-            extra.put("nombre_extra", arrayExtras[x])
+            extra.put("valor", valorExtras[x + posicionExtras])
+            extra.put("nombre_extra", arrayExtras[x + posicionExtras])
             extras.put(extra)
+            aux = x
         }
+        posicionExtras = aux
+        aux = 0
+        println(posicionExtras)
+        vehiculo.put("extras",extras)
+        val fotos = JSONArray()
+        for (x in 0 until numFotos[i]) {
+            fotos.put(fotosCotxes[x + posicionFotos])
+            aux = x
+        }
+        posicionFotos = aux
+        println(posicionFotos)
+        vehiculo.put("foto",fotos)
+        vehiculos.put(vehiculo)
     }
-
-
 
     val f = FileWriter("cotxes.json")
     f.write(arrelJson.toString(4))
