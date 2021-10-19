@@ -22,7 +22,6 @@ class FinestraBicicas : JFrame() {
         setTitle("JSON: Vista detallada BICICAS")
         setSize(800, 800)
         setLayout(BorderLayout())
-
         val panell1 = JPanel(FlowLayout())
         val panell2 = JPanel(GridLayout(1, 2))
         add(panell1, BorderLayout.NORTH)
@@ -49,18 +48,31 @@ class FinestraBicicas : JFrame() {
         // Instruccions per a llegir de la pàgina de Bicicas i col·locar en arrel
         val bicicas = URL("http://gestiona.bicicas.es/apps/apps.php");
         val arrel = (JSONTokener(bicicas.openConnection().getInputStream()).nextValue() as JSONArray).get(0) as JSONObject
-        // Instruccions per a col·locar les estacions en estacions (JsonArray)
-
+        estacions = arrel.getJSONArray("ocupacion")
     }
 
     fun mostrarEstacions() {
         // Instruccions per a introduir en el JList les estacions
         // La manera d'anar introduint informació en el JList és a través del DefaultListModel:
         // listModel.addElement("Linia que es vol introduir ")
+        for (i in 0 until estacions.length()) {
+            val estacion = estacions.get(i) as JSONObject
+            listModel.addElement("${estacion.get("id")}.- ${estacion.get("punto")} (${estacion.get("ocupados")}/${estacion.get("puestos")})")
+        }
     }
 
     fun visualitzaEstacio(numEst: Int) {
-        // Instruccions per a mostrar les característiques en el area, el JTextArea de la dreta anomenat area
+        val estacion = estacions.get(numEst) as JSONObject
+        area.text = ""
+        area.text += "           ${estacion.get("id")}.- ${estacion.get("punto")}\n\n" +
+                "Numero estacio: ${estacion.get("id")}\n" +
+                "Nom estacio: ${estacion.get("punto")}\n" +
+                "Posicions: ${estacion.get("puestos")}\n" +
+                "Posicions ocupades: ${estacion.get("ocupados")}\n" +
+                "Latitud:  ${estacion.get("latitud")}\n" +
+                "Longitud: ${estacion.get("longitud")}\n" +
+                "Percentatge alta ocupacio: ${estacion.get("porcentajeAltaOcupacion")}\n" +
+                "Percentatge baixa ocupacio: ${estacion.get("porcentajeBajaOcupacion")}"
     }
 }
 
