@@ -42,13 +42,6 @@ class FinestraJSON : JFrame() {
         panell2.add(area)
 
 
-        val llistaPunts = llistaRutes[0].llistaDePunts
-        for (i in llistaPunts) {
-            area.text += "${i.nom} "
-            area.text += "(${i.coord.latitud}, "
-            area.text += "${i.coord.longitud})"
-            area.text += "\n"
-        }
         combo.addActionListener {
             area.text = ""
             val llistaPunts = llistaRutes[combo.selectedIndex].llistaDePunts
@@ -59,6 +52,7 @@ class FinestraJSON : JFrame() {
                 area.text += "\n"
             }
         }
+        combo.selectedIndex = 0
     }
 }
 fun main() {

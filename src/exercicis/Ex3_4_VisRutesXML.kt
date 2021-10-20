@@ -40,22 +40,13 @@ class Finestra : JFrame() {
         panell2.add(area)
 
         // Carreguem en area la primera ruta
-        var ruta = llistaRutes.item(combo.selectedIndex) as Element
-        var llistaPunts = ruta.getElementsByTagName("punt")
-        for (i in 0 until llistaPunts.length) {
-            val punt = llistaPunts.item(i) as Element
-            area.text += "${punt.getElementsByTagName("nom").item(0).textContent} "
-            area.text += "(${punt.getElementsByTagName("latitud").item(0).textContent}, "
-            area.text += "${punt.getElementsByTagName("longitud").item(0).textContent})"
-            area.text += "\n"
-        }
         // Listener que cambia el area als punts de cada ruta
         combo.addActionListener {
             area.text = ""
             // Guardem la ruta elegida
-            ruta = llistaRutes.item(combo.selectedIndex) as Element
+            val ruta = llistaRutes.item(combo.selectedIndex) as Element
             // Creem una array de punts d'on agafarem els punts
-            llistaPunts = ruta.getElementsByTagName("punt")
+            val llistaPunts = ruta.getElementsByTagName("punt")
             for (i in 0 until llistaPunts.length) {
                 val punt = llistaPunts.item(i) as Element
                 area.text += "${punt.getElementsByTagName("nom").item(0).textContent} "
@@ -64,6 +55,7 @@ class Finestra : JFrame() {
                 area.text += "\n"
             }
         }
+        combo.selectedIndex = 0
     }
 }
 
